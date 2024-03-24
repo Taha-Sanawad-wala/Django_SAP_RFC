@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form action="" method="post">
+    {% csrf_token %}
+  <label for="RFC">Choose a RFC:</label>
+  <select name="rfc" id="RFC">
+    <option value="RFC_READ_TABLE">RFC_READ_TABLE</option>
+  </select>
+  <label for="table">Choose a Table:</label>
+  <select name="table" id="table">
+    <option value="MEAN">MEAN</option>
+    <option value="TCURR">TCURR</option>
+  </select>
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+
+{% if result %}
+    {{table_name}}
+    <table>
+        <tr bgcolor="#C2D0C7">
+        {% for i in result.0%}
+          <th>column name</th>
+        {% endfor %}
+        </tr>
+        {% for i in  result %}
+        <tr>
+          <td >{{i.0}}</td>
+          <td >{{i.1}}</td>
+          <td >{{i.2}}</td>
+          <td >{{i.3}}</td>
+          <td >{{i.4}}</td>
+          <td >{{i.5}}</td>
+          <td >{{i.6}}</td>
+          <td >{{i.7}}</td>
+        </tr> 
+    {% endfor %} 
+{% endif %}
+
+
+
+</body>
+</html>
+
